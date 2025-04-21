@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "data_quests",
+  "info": {
+    "singularName": "data-quest",
+    "pluralName": "data-quests",
+    "displayName": "dataQuest",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "dataJson": {
+      "type": "json"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}
