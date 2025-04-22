@@ -1,12 +1,17 @@
 import { MdLanguage } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { observer } from "mobx-react-lite";
+import Store from "../store/Store";
 
-function Modal({ isOpen }: { isOpen: { data: boolean } }) {
+const Modal = observer(() => {
     const { t, i18n } = useTranslation();
     const [langs, setLangs] = useState(t(""));
-    function changeLang(e) {
-        console.log(t(`lang${e.target.value}`));
+    function changeLang(
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) {
+        Store.locale = e.target.value;
+        console.log(langs);
         setLangs(t(`lang${e.target.value}`));
         i18n.changeLanguage(e.target.value);
     }
@@ -26,7 +31,7 @@ function Modal({ isOpen }: { isOpen: { data: boolean } }) {
 
                 <div className='flex justify-center'>
                     <button
-                        onClick={() => isOpen(false)}
+                        onClick={() => (Store.isOpen = false)}
                         className=' cursor-pointer bg-[#1BB394] text-white py-[8px] px-[25px] rounded-xl'>
                         {t("agree")}
                     </button>
@@ -34,6 +39,6 @@ function Modal({ isOpen }: { isOpen: { data: boolean } }) {
             </div>
         </div>
     );
-}
+});
 
 export default Modal;

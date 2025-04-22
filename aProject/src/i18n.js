@@ -12,6 +12,7 @@ const resources = {
             langkz: "Казахский",
             langru: "Русский",
             agree: "Согласен",
+            department: "Выберите отдел",
         },
     },
     kz: {
@@ -21,6 +22,7 @@ const resources = {
             langkz: "Қазақша",
             langru: "Орысша",
             agree: "Келісемін",
+            department: "Бөлімді таңдаңыз",
         },
     },
 };

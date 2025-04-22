@@ -4,15 +4,20 @@
 import "survey-core/survey-core.css";
 import { Model } from "survey-core";
 import { Survey } from "survey-react-ui";
-import { surveyJson } from "../services/data";
+import { surveyJsonRu } from "../services/data";
+import { surveyJsonKz } from "../services/dataKz";
 
 import "survey-core/i18n/russian";
 import "survey-core/i18n/kazakh";
 
 import acceptDataToServer from "../services/acceptService";
+import { observer } from "mobx-react-lite";
+import Store from "../store/Store";
 
-export default function SurveyComponent() {
-    const survey = new Model(surveyJson);
+const SurveyComponent = observer(() => {
+    const survey = new Model(
+        Store.locale == "ru" ? surveyJsonRu : surveyJsonKz
+    );
     survey.locale = "ru";
 
     survey.onComplete.add((survey, options) => {
@@ -30,4 +35,6 @@ export default function SurveyComponent() {
         acceptDataToServer(dataStr, options);
     });
     return <Survey model={survey} />;
-}
+});
+
+export default SurveyComponent;

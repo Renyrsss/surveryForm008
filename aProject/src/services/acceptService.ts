@@ -4,7 +4,7 @@ export default function acceptDataToServer(dataStr: Object, options: any) {
     });
     fetch("http://localhost:1337/api/data-quests", {
         method: "POST",
-        body: dataStr,
+        body: JSON.stringify(dataStr),
         headers: headers,
     })
         .then((response) => {

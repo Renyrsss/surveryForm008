@@ -1,4 +1,4 @@
-export const surveyJson = {
+export const surveyJsonRu = {
     showProgressBar: true,
     progressBarLocation: "top",
     pageNextText: "Далее",
@@ -309,19 +309,15 @@ export const surveyJson = {
                     rateCount: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
-                {
-                    type: "rating",
-                    name: "Была ли предоставлена Вам возможность свободного выбора врача",
-                    title: "Была ли предоставлена Вам возможность свободного выбора врача",
-                    isRequired: true,
-                    autoGenerate: false,
-                    rateCount: 10,
-                    rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-                },
-            ],
-        },
-        {
-            elements: [
+                // {
+                //     type: "rating",
+                //     name: "Была ли предоставлена Вам возможность свободного выбора врача",
+                //     title: "Была ли предоставлена Вам возможность свободного выбора врача",
+                //     isRequired: true,
+                //     autoGenerate: false,
+                //     rateCount: 10,
+                //     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                // },
                 {
                     type: "rating",
                     name: "Как Вы оцениваете наличие информационных / образовательных пособий для пациентов",
@@ -342,6 +338,7 @@ export const surveyJson = {
                 },
             ],
         },
+
         {
             elements: [
                 {
