@@ -12,7 +12,7 @@ function MonthBtn() {
     const [endDate, setEndDate] = useState("");
 
     const handleFilter = () => {
-        const url = `http://localhost:1337/api/data-quests?filters[$and][0][createdAt][$gt]=${decodeURIComponent(
+        const url = `http://192.168.101.25:1339/api/data-quests?filters[$and][0][createdAt][$gt]=${decodeURIComponent(
             startDate
         )}&filters[$and][1][createdAt][$lte]=${encodeURIComponent(endDate)}`;
         console.log(encodeURIComponent(endDate));

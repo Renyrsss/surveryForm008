@@ -1,7 +1,7 @@
 import axios from "axios";
 import DataStore from "../store/DataStore";
 
-async function getData(url = "http://localhost:1337/api/data-quests") {
+async function getData(url = "http://192.168.101.25:1339/api/data-quests") {
     await axios.get(url).then((res) => {
         // console.log(res.data.data[0].dataJson["surveyResult"]);
         DataStore.dataJsons = res.data.data;

@@ -2,7 +2,7 @@ export default function acceptDataToServer(dataStr: Object, options: any) {
     const headers = new Headers({
         "Content-Type": "application/json; charset=utf-8",
     });
-    fetch("http://localhost:1337/api/data-quests", {
+    fetch("http://192.168.101.25:1339/api/data-quests", {
         method: "POST",
         body: JSON.stringify(dataStr),
         headers: headers,
