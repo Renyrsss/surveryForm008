@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import YerOrNoComp from "../components/YerOrNoComp";
 import getData from "../service/service";

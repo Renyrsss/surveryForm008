@@ -11,7 +11,6 @@ import {
     Tooltip,
     CartesianGrid,
     ResponsiveContainer,
-    Legend,
 } from "recharts";
 
 const MyChartComponent = observer(() => {

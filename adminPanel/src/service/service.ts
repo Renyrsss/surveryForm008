@@ -2,17 +2,14 @@ import axios from "axios";
 import DataStore from "../store/DataStore";
 
 async function getData(url = "http://localhost:1337/api/data-quests") {
-    const data = [];
-    const filterDataAt =
-        "&filters[$and][0][createdAt][$gt]=2025-03-31T19:00:00.000Z&filters[$and][1][createdAt][$lte]=2025-04-29T19%3A00%3A00.000Z";
     await axios.get(url).then((res) => {
         // console.log(res.data.data[0].dataJson["surveyResult"]);
         DataStore.dataJsons = res.data.data;
         DataStore.surveryCount = res.data.meta.pagination.total;
-        const dataS = res.data.data[0].dataJson["surveyResult"];
-        Object.keys(dataS).forEach((key) => {
-            // console.log(`${key} : ${dataS[key]}`);
-        });
+        // const dataS = res.data.data[0].dataJson["surveyResult"];
+        // Object.keys(dataS).forEach((key) => {
+        //     // console.log(`${key} : ${dataS[key]}`);
+        // });
     });
 }
 
