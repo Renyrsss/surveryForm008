@@ -1,17 +1,68 @@
 import axios from "axios";
 import DataStore from "../store/DataStore";
 
-async function getData(url = "http://192.168.101.25:1339/api/data-quests") {
-    await axios.get(url).then((res) => {
-        // console.log(res.data.data[0].dataJson["surveyResult"]);
-        DataStore.dataJsons = res.data.data;
-        DataStore.surveryCount = res.data.meta.pagination.total;
-        // const dataS = res.data.data[0].dataJson["surveyResult"];
-        // Object.keys(dataS).forEach((key) => {
-        //     // console.log(`${key} : ${dataS[key]}`);
-        // });
-    });
+export function buildUrl(): string {
+    const base = "http://192.168.101.25:1339/api/data-quests";
+    const filters = [];
+
+    if (DataStore.startDate) {
+        filters.push(
+            `filters[$and][0][createdAt][$gt]=${encodeURIComponent(
+                DataStore.startDate
+            )}`
+        );
+    }
+
+    if (DataStore.endDate) {
+        filters.push(
+            `filters[$and][1][createdAt][$lte]=${encodeURIComponent(
+                DataStore.endDate
+            )}`
+        );
+    }
+
+    if (DataStore.side && DataStore.side !== "Все") {
+        filters.push(
+            `filters[type][$eq]=${encodeURIComponent(DataStore.side)}`
+        );
+    }
+
+    if (filters.length === 0) return base;
+    return `${base}?${filters.join("&")}`;
 }
+
+async function getData() {
+    const url = buildUrl();
+    console.log("👉 URL запроса:", url);
+    const res = await axios.get(url);
+    DataStore.dataJsons = res.data.data;
+    DataStore.surveryCount = res.data.meta.pagination.total;
+}
+
+// export async function filtersSide(side: string) {
+//     console.log(side);
+
+//     if (side == "Все") {
+//         getData();
+//     } else {
+//         await axios
+//             .get(
+//                 "http://192.168.101.25:1339/api/data-quests" +
+//                     `?filters[type][$eq]=${side}`
+//             )
+//             .then((res) => {
+//                 // console.log(res.data.data[0].dataJson["surveyResult"]);
+//                 console.log(res.data.data);
+
+//                 DataStore.dataJsons = res.data.data;
+//                 DataStore.surveryCount = res.data.meta.pagination.total;
+//                 // const dataS = res.data.data[0].dataJson["surveyResult"];
+//                 // Object.keys(dataS).forEach((key) => {
+//                 //     // console.log(`${key} : ${dataS[key]}`);
+//                 // });
+//             });
+//     }
+// }
 
 // Принимает массив всех ответов и возвращает среднее значение по каждому вопросу
 interface RawEntry {

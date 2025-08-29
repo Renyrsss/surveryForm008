@@ -1,10 +1,10 @@
 import { useState } from "react";
-
-import getData from "../service/service";
+import getData, { buildUrl } from "../service/service";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import { ru } from "date-fns/locale/ru";
+import DataStore from "../store/DataStore";
 registerLocale("ru", ru);
 
 function MonthBtn() {
@@ -12,21 +12,19 @@ function MonthBtn() {
     const [endDate, setEndDate] = useState("");
 
     const handleFilter = () => {
-        const url = `http://192.168.101.25:1339/api/data-quests?filters[$and][0][createdAt][$gt]=${decodeURIComponent(
-            startDate
-        )}&filters[$and][1][createdAt][$lte]=${encodeURIComponent(endDate)}`;
-        console.log(encodeURIComponent(endDate));
-        getData(url);
-        // здесь можешь отправить запрос или отфильтровать данные по датам
+        DataStore.setStartDate(startDate);
+        DataStore.setEndDate(endDate);
+        const url = buildUrl();
+        DataStore.setUrl(url);
+        getData();
     };
 
     const handleStartChange = (date: Date | null) => {
         if (date) {
             const iso = date.toISOString();
             setStartDate(iso);
-
             if (endDate && new Date(endDate) < date) {
-                setEndDate(""); // сбросить, если конечная раньше начальной
+                setEndDate("");
             }
         } else {
             setStartDate("");
@@ -36,7 +34,6 @@ function MonthBtn() {
     const handleEndChange = (date: Date | null) => {
         if (date) {
             const iso = date.toISOString();
-
             setEndDate(iso);
         } else {
             setEndDate("");
@@ -48,7 +45,6 @@ function MonthBtn() {
             <div className='flex items-center gap-4'>
                 <div className='flex items-center gap-[10px]'>
                     <label className='mb-1'>С:</label>
-
                     <DatePicker
                         className='bg-white p-[10px] rounded-[10px]'
                         selected={startDate ? new Date(startDate) : null}
@@ -72,9 +68,10 @@ function MonthBtn() {
                         placeholderText='Конечная дата'
                     />
                 </div>
+
                 <button
                     onClick={handleFilter}
-                    className='bg-blue-600 text-white py-[5px] px-[15px] rounded-[10px] cursor-pointer '>
+                    className='bg-blue-600 text-white py-[5px] px-[15px] rounded-[10px] cursor-pointer'>
                     Поиск
                 </button>
             </div>

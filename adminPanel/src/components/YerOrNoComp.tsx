@@ -17,7 +17,7 @@ import { toJS } from "mobx";
 
 const YerOrNoComp = observer(() => {
     const yesNoStats = getYesNoStats(toJS(DataStore.dataJsons));
-    console.log(yesNoStats);
+    // console.log(yesNoStats);
 
     return (
         <div className=''>
@@ -33,7 +33,7 @@ const YerOrNoComp = observer(() => {
                 const data = [
                     { name: "Ответы", ДА: stats["Да"], НЕТ: stats["Нет"] },
                 ];
-                console.log(data[0]["ДА"]);
+                // console.log(data[0]["ДА"]);
 
                 return (
                     <div key={question} className='mb-4'>
