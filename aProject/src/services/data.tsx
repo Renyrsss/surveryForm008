@@ -72,6 +72,7 @@ export const surveyJsonRu = {
                             isRequired: true,
                             autoGenerate: false,
                             rateCount: 10,
+                            defaultValue: 10,
                             rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         },
                         {
@@ -81,6 +82,7 @@ export const surveyJsonRu = {
                             isRequired: true,
                             autoGenerate: false,
                             rateCount: 10,
+                            defaultValue: 10,
                             rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         },
                         {
@@ -90,6 +92,7 @@ export const surveyJsonRu = {
                             isRequired: true,
                             autoGenerate: false,
                             rateCount: 10,
+                            defaultValue: 10,
                             rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         },
                         {
@@ -99,6 +102,7 @@ export const surveyJsonRu = {
                             isRequired: true,
                             autoGenerate: false,
                             rateCount: 10,
+                            defaultValue: 10,
                             rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                         },
                     ],
@@ -118,6 +122,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -127,6 +132,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -136,6 +142,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -145,6 +152,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -154,6 +162,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -163,6 +172,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -172,6 +182,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
             ],
@@ -186,6 +197,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -195,6 +207,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -204,6 +217,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -213,6 +227,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -222,6 +237,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -231,6 +247,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -240,6 +257,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
             ],
@@ -253,6 +271,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -262,6 +281,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -271,6 +291,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -280,6 +301,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -289,6 +311,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -298,6 +321,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -307,6 +331,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 // {
@@ -325,6 +350,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
                 {
@@ -334,6 +360,7 @@ export const surveyJsonRu = {
                     isRequired: true,
                     autoGenerate: false,
                     rateCount: 10,
+                    defaultValue: 10,
                     rateValues: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 },
             ],
@@ -350,6 +377,7 @@ export const surveyJsonRu = {
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                     separateSpecialChoices: true,
+                    defaultValue: "Да",
                     allowClear: true,
                 },
                 {
@@ -360,6 +388,7 @@ export const surveyJsonRu = {
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Да",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -367,10 +396,12 @@ export const surveyJsonRu = {
                     type: "radiogroup",
                     name: "началом лечения",
                     title: "Было ли получено от Вас согласие перед исследованием или началом лечения ",
+
                     isRequired: true,
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Да",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -382,6 +413,7 @@ export const surveyJsonRu = {
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Да",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -393,6 +425,7 @@ export const surveyJsonRu = {
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Нет",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -404,6 +437,7 @@ export const surveyJsonRu = {
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Нет",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -416,6 +450,7 @@ export const surveyJsonRu = {
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                     separateSpecialChoices: true,
+                    defaultValue: "Да",
                     allowClear: true,
                 },
                 {
@@ -426,6 +461,7 @@ export const surveyJsonRu = {
 
                     colCount: 3,
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
+                    defaultValue: "Да",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -447,6 +483,7 @@ export const surveyJsonRu = {
                         "45 мин - 1 час",
                         "1 час и больше",
                     ],
+                    defaultValue: "Меньше 15 мин",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },
@@ -462,8 +499,9 @@ export const surveyJsonRu = {
                         "Такое же, как и в других медицинских организациях",
                         "Хуже, чем в других медицинских организациях",
                         "Не знаю",
-                        "1 час и больше",
                     ],
+                    defaultValue:
+                        "Лучше, чем в других медицинских организациях",
                     separateSpecialChoices: true,
                     allowClear: true,
                 },

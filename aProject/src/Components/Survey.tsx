@@ -20,10 +20,8 @@ const SurveyComponent = observer(() => {
     );
     survey.locale = "ru";
 
-    survey.onComplete.add((survey, options) => {
-        options.showSaveInProgress();
+    survey.onComplete.add(async (survey, options) => {
         const dataObj = survey.data;
-        console.log(survey.data);
 
         const dataToFetch = {
             data: {
@@ -32,8 +30,21 @@ const SurveyComponent = observer(() => {
             },
         };
         const dataStr = JSON.stringify(dataToFetch);
-        acceptDataToServer(dataStr, options);
+
+        options.showSaveInProgress(); // показываем "идет отправка..."
+
+        try {
+            await acceptDataToServer(dataStr);
+            options.showSaveSuccess("✅ Данные успешно отправлены!");
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } catch (error) {
+            console.error("Ошибка при отправке:", error);
+            options.showSaveError("❌ Не удалось отправить данные.");
+        }
     });
+
     return <Survey model={survey} />;
 });
 
