@@ -18,7 +18,7 @@ const SurveyComponent = observer(() => {
     const survey = new Model(
         Store.locale == "ru" ? surveyJsonRu : surveyJsonKz
     );
-    survey.locale = "ru";
+    survey.locale = Store.locale === "ru" ? "ru" : "kk";
 
     survey.onComplete.add(async (survey, options) => {
         const dataObj = survey.data;
