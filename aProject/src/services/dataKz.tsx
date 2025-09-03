@@ -1,9 +1,9 @@
 export const surveyJsonKz = {
     showProgressBar: true,
     progressBarLocation: "top",
-    pageNextText: "Далее",
-    pagePrevText: "Назад",
-    completeText: "Отправить",
+    pageNextText: "Келесі",
+    pagePrevText: "Артқа",
+    completeText: "Жіберу",
     clearText: "exit",
 
     pages: [

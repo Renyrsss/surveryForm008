@@ -35,13 +35,21 @@ const SurveyComponent = observer(() => {
 
         try {
             await acceptDataToServer(dataStr);
-            options.showSaveSuccess("✅ Данные успешно отправлены!");
+            const success =
+                Store.locale === "ru"
+                    ? "✅ Данные успешно отправлены!"
+                    : "✅ Деректер сәтті жіберілді!";
+            options.showSaveSuccess(success);
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
         } catch (error) {
             console.error("Ошибка при отправке:", error);
-            options.showSaveError("❌ Не удалось отправить данные.");
+            const errText =
+                Store.locale === "ru"
+                    ? "❌ Не удалось отправить данные."
+                    : "❌ Деректер жіберілмеді";
+            options.showSaveError(errText);
         }
     });
 
