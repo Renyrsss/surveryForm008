@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tickets",
+  "info": {
+    "singularName": "ticket",
+    "pluralName": "tickets",
+    "displayName": "Tickets"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userQuery": {
+      "type": "string"
+    },
+    "userSide": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userComment": {
+      "type": "text"
+    },
+    "ourComment": {
+      "type": "text"
+    },
+    "Progress": {
+      "type": "enumeration",
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "Некорректная заявка",
+        "В работе"
+      ],
+      "default": "Новая заявка"
+    },
+    "complexity": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D - долгосрочный"
+      ],
+      "default": "B"
+    },
+    "employee": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::employee.employee",
+      "inversedBy": "ticket"
+    }
+  }
+}
