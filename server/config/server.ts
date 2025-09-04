@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 module.exports = ({ env }) => ({
     host: "0.0.0.0",
@@ -10,8 +9,10 @@ module.exports = ({ env }) => ({
     },
     ssl: {
         key: fs.readFileSync(
-            path.join("/home/hdadmin/certs/localhost+2-key.pem")
+            "/home/hdadmin/nnmcsigndoc/client/localhost+2-key.pem"
         ),
-        cert: fs.readFileSync(path.join("/home/hdadmin/certs/localhost+2.pem")),
+        cert: fs.readFileSync(
+            "/home/hdadmin/nnmcsigndoc/client/localhost+2.pem"
+        ),
     },
 });
