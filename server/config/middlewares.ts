@@ -1,14 +1,23 @@
-module.exports = ({ env }) => [
+export default [
     "strapi::errors",
-    "strapi::security",
     {
         name: "strapi::cors",
         config: {
-            origin: ["https://localhost:4000"], // фронт, который будет обращаться
-            methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            credentials: true,
+            enabled: true,
+            origin: [
+                "http://kdu.projects.nnmc.kz",
+                "https://kdu.projects.nnmc.kz",
+                "http://192.168.101.25:4000",
+                "http://form008.projects.nnmc.kz",
+                "https://form008.projects.nnmc.kz",
+                "http://192.168.101.25:1113",
+                "http://192.168.101.25:1114",
+            ],
+            headers: "*",
+            methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
         },
     },
+    "strapi::security",
     "strapi::poweredBy",
     "strapi::logger",
     "strapi::query",
@@ -17,3 +26,4 @@ module.exports = ({ env }) => [
     "strapi::favicon",
     "strapi::public",
 ];
+//asdfa;slkfjsa;dlf
