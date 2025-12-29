@@ -2,7 +2,7 @@ import axios from "axios";
 import DataStore from "../store/DataStore";
 
 export function buildUrl(): string {
-    const base = "http://192.168.101.25:1339/api/data-quests";
+    const base = "/api/data-quests";
     const filters = [];
 
     if (DataStore.startDate) {
@@ -31,12 +31,36 @@ export function buildUrl(): string {
     return `${base}?${filters.join("&")}`;
 }
 
-async function getData() {
-    const url = buildUrl();
-    console.log("👉 URL запроса:", url);
-    const res = await axios.get(url);
-    DataStore.dataJsons = res.data.data;
-    DataStore.surveryCount = res.data.meta.pagination.total;
+export async function getData() {
+    const baseUrl = buildUrl();
+    const separator = baseUrl.includes("?") ? "&" : "?";
+
+    let page = 1;
+    const pageSize = 100;
+    let allData: any[] = [];
+    let totalPages = 1;
+
+    console.log("📡 Загружаем данные...");
+
+    do {
+        const url = `${baseUrl}${separator}pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+        const res = await axios.get(url);
+
+        const data = res.data.data || [];
+        const meta = res.data.meta?.pagination;
+        totalPages = meta?.pageCount || 1;
+
+        allData = allData.concat(data);
+        console.log(
+            `✅ Страница ${page}/${totalPages} загружена (${data.length} записей)`
+        );
+
+        page++;
+    } while (page <= totalPages);
+
+    console.log(`📊 Всего загружено: ${allData.length} записей`);
+    DataStore.dataJsons = allData;
+    DataStore.surveryCount = allData.length;
 }
 
 // export async function filtersSide(side: string) {

@@ -37,6 +37,17 @@ function Sidebar() {
                     }>
                     Профиль
                 </NavLink>
+                <NavLink
+                    to={"/comments"}
+                    className={({ isActive }) =>
+                        `px-4 py-2 rounded transition duration-200 sticky ${
+                            isActive
+                                ? "bg-blue-600 text-white"
+                                : "text-gray-600 hover:text-blue-600"
+                        }`
+                    }>
+                    Комментарий
+                </NavLink>
             </ul>
         </div>
     );
