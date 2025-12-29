@@ -16,8 +16,8 @@ function Comments() {
 
     const fetchData = async () => {
         // сохраняем даты в MobX store (если используешь buildUrl)
-        DataStore.startDate = startDate || null;
-        DataStore.endDate = endDate || null;
+        DataStore.startDate = startDate || "";
+        DataStore.endDate = endDate || "";
 
         await getData();
 
