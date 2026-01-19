@@ -3,9 +3,8 @@
 ## Структура
 
 ```
-form008.nnmc.kz/         → Frontend (React)
-form008.nnmc.kz/server/  → Strapi API
-form008.nnmc.kz/server/admin → Strapi Admin Panel
+form008.nnmc.kz     → Frontend (React)
+strapi.nnmc.kz      → Strapi (или другой поддомен/IP)
 ```
 
 ---
@@ -20,6 +19,11 @@ cd frontend && npm ci && npm run build
 ### Publish directory:
 ```
 frontend/dist
+```
+
+### Environment variables:
+```env
+VITE_API_URL=https://strapi.nnmc.kz
 ```
 
 ---
@@ -40,7 +44,6 @@ cd server && npm run start
 ```env
 HOST=0.0.0.0
 PORT=1339
-PUBLIC_URL=https://form008.nnmc.kz/server
 
 APP_KEYS=сгенерируй-случайные-ключи-через-запятую
 API_TOKEN_SALT=сгенерируй-случайную-строку
@@ -59,58 +62,14 @@ DATABASE_FILENAME=.tmp/data.db
 
 ---
 
-## 3. Настройка Reverse Proxy в Coolify
+## 3. После деплоя
 
-В Coolify нужно настроить маршрутизацию:
-
-| Путь | Сервис |
-|------|--------|
-| `/` | Frontend (статика из `frontend/dist`) |
-| `/server/*` | Strapi (порт 1339) |
-
-### Пример Caddy (Coolify использует Caddy):
-
-```caddy
-form008.nnmc.kz {
-    # Strapi под /server
-    handle_path /server/* {
-        reverse_proxy localhost:1339
-    }
-    
-    # Frontend — всё остальное
-    handle {
-        root * /path/to/frontend/dist
-        try_files {path} /index.html
-        file_server
-    }
-}
-```
-
----
-
-## 4. После деплоя
-
-1. Открой `https://form008.nnmc.kz/server/admin`
+1. Открой Strapi Admin (например `https://strapi.nnmc.kz/admin`)
 2. Создай администратора Strapi
 3. Настрой права доступа:
    - **Settings → Users & Permissions → Roles → Public**
    - Включи: `access-code.verify`, `data-quest.create`, `data-quest.find`, `survey-config.find`
 4. Создай PIN-коды в **Content Manager → Access Code**
-
----
-
-## Быстрая проверка
-
-```bash
-# Проверка Frontend
-curl https://form008.nnmc.kz/
-
-# Проверка Strapi API
-curl https://form008.nnmc.kz/server/api/survey-configs
-
-# Проверка Strapi Admin
-curl https://form008.nnmc.kz/server/admin
-```
 
 ---
 
