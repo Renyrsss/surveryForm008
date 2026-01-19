@@ -65,6 +65,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                     minRateDescription: "Плохо",
                     maxRateDescription: "Отлично",
                 },
@@ -76,6 +77,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -85,6 +87,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -94,6 +97,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -109,6 +113,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -118,6 +123,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -127,6 +133,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -136,6 +143,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -151,6 +159,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -160,6 +169,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -169,6 +179,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -178,6 +189,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -193,6 +205,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -202,6 +215,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -211,6 +225,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -226,6 +241,7 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -235,12 +251,14 @@ export const surveyJsonRu = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "radiogroup",
                     name: "Сравнение с другими",
                     title: "Как оцениваете клинику в сравнении с другими?",
                     isRequired: true,
+                    defaultValue: "Лучше других",
                     choices: [
                         "Лучше других",
                         "Такая же",
@@ -259,6 +277,7 @@ export const surveyJsonRu = {
                     name: "Выбор врача",
                     title: "Была ли возможность выбора врача?",
                     isRequired: true,
+                    defaultValue: "Да",
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                 },
                 {
@@ -266,6 +285,7 @@ export const surveyJsonRu = {
                     name: "Конфиденциальность",
                     title: "Соблюдалась ли конфиденциальность?",
                     isRequired: true,
+                    defaultValue: "Да",
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                 },
                 {
@@ -273,6 +293,7 @@ export const surveyJsonRu = {
                     name: "Согласие на лечение",
                     title: "Было ли получено ваше согласие на лечение?",
                     isRequired: true,
+                    defaultValue: "Да",
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                 },
                 {
@@ -280,6 +301,7 @@ export const surveyJsonRu = {
                     name: "Гигиена рук",
                     title: "Мыл ли медработник руки перед осмотром?",
                     isRequired: true,
+                    defaultValue: "Да",
                     choices: ["Да", "Нет", "Затрудняюсь ответить"],
                 },
             ],

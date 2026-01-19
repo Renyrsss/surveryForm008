@@ -65,6 +65,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                     minRateDescription: "Нашар",
                     maxRateDescription: "Өте жақсы",
                 },
@@ -76,6 +77,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -85,6 +87,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -94,6 +97,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -109,6 +113,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -118,6 +123,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -127,6 +133,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -136,6 +143,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -151,6 +159,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -160,6 +169,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -169,6 +179,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -178,6 +189,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -193,6 +205,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -202,6 +215,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -211,6 +225,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
             ],
         },
@@ -226,6 +241,7 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "rating",
@@ -235,12 +251,14 @@ export const surveyJsonKz = {
                     rateCount: 10,
                     rateMin: 1,
                     rateMax: 10,
+                    defaultValue: 10,
                 },
                 {
                     type: "radiogroup",
                     name: "Сравнение с другими",
                     title: "Клиниканы басқалармен салыстырғанда қалай бағалайсыз?",
                     isRequired: true,
+                    defaultValue: "Басқалардан жақсы",
                     choices: [
                         "Басқалардан жақсы",
                         "Бірдей",
@@ -259,6 +277,7 @@ export const surveyJsonKz = {
                     name: "Выбор врача",
                     title: "Дәрігерді таңдау мүмкіндігі болды ма?",
                     isRequired: true,
+                    defaultValue: "Иә",
                     choices: ["Иә", "Жоқ", "Жауап беру қиын"],
                 },
                 {
@@ -266,6 +285,7 @@ export const surveyJsonKz = {
                     name: "Конфиденциальность",
                     title: "Құпиялылық сақталды ма?",
                     isRequired: true,
+                    defaultValue: "Иә",
                     choices: ["Иә", "Жоқ", "Жауап беру қиын"],
                 },
                 {
@@ -273,6 +293,7 @@ export const surveyJsonKz = {
                     name: "Согласие на лечение",
                     title: "Емдеуге келісіміңіз алынды ма?",
                     isRequired: true,
+                    defaultValue: "Иә",
                     choices: ["Иә", "Жоқ", "Жауап беру қиын"],
                 },
                 {
@@ -280,6 +301,7 @@ export const surveyJsonKz = {
                     name: "Гигиена рук",
                     title: "Медқызметкер қарау алдында қолын жуды ма?",
                     isRequired: true,
+                    defaultValue: "Иә",
                     choices: ["Иә", "Жоқ", "Жауап беру қиын"],
                 },
             ],

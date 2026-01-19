@@ -11,7 +11,7 @@ const SurveyPage = observer(() => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-teal-50">
+        <div className="min-h-screen bg-white">
             {surveyStore.showWelcome && <WelcomeModal />}
             <SurveyForm />
         </div>
