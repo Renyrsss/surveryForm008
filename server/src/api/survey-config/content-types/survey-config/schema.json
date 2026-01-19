@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "survey_configs",
+  "info": {
+    "singularName": "survey-config",
+    "pluralName": "survey-configs",
+    "displayName": "SurveyConfig",
+    "description": "SurveyJS configuration by locale"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "locale": {
+      "type": "string",
+      "required": true
+    },
+    "schema": {
+      "type": "json",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "version": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

@@ -369,6 +369,43 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAccessCodeAccessCode extends Struct.CollectionTypeSchema {
+  collectionName: 'access_codes';
+  info: {
+    description: 'PIN access codes for survey';
+    displayName: 'AccessCode';
+    pluralName: 'access-codes';
+    singularName: 'access-code';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.DateTime;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    label: Schema.Attribute.String;
+    lastUsedAt: Schema.Attribute.DateTime;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::access-code.access-code'
+    > &
+      Schema.Attribute.Private;
+    maxUses: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    usesCount: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+  };
+}
+
 export interface ApiDataQuestDataQuest extends Struct.CollectionTypeSchema {
   collectionName: 'data_quests';
   info: {
@@ -463,6 +500,40 @@ export interface ApiPodpisannyeDokumentyPodpisannyeDokumenty
     useriin: Schema.Attribute.String;
     userName: Schema.Attribute.String;
     userPhone: Schema.Attribute.String;
+  };
+}
+
+export interface ApiSurveyConfigSurveyConfig
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'survey_configs';
+  info: {
+    description: 'SurveyJS configuration by locale';
+    displayName: 'SurveyConfig';
+    pluralName: 'survey-configs';
+    singularName: 'survey-config';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::survey-config.survey-config'
+    > &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    schema: Schema.Attribute.JSON & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    version: Schema.Attribute.String;
   };
 }
 
@@ -1027,9 +1098,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::access-code.access-code': ApiAccessCodeAccessCode;
       'api::data-quest.data-quest': ApiDataQuestDataQuest;
       'api::employee.employee': ApiEmployeeEmployee;
       'api::podpisannye-dokumenty.podpisannye-dokumenty': ApiPodpisannyeDokumentyPodpisannyeDokumenty;
+      'api::survey-config.survey-config': ApiSurveyConfigSurveyConfig;
       'api::ticket.ticket': ApiTicketTicket;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
