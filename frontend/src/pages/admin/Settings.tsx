@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Server, Key, FileText } from "lucide-react";
 
+// В dev: localhost:1337, в prod: /server
+const strapiAdminUrl = import.meta.env.PROD
+    ? "/server/admin"
+    : "http://localhost:1339/admin";
+
 export default function Settings() {
     return (
         <div className="space-y-6">
@@ -35,7 +40,7 @@ export default function Settings() {
                         вопросами опроса, PIN-кодами и просмотра сырых данных.
                     </p>
                     <a
-                        href="http://192.168.101.25:1339/admin"
+                        href={strapiAdminUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 bg-violet-500 text-white rounded-xl hover:bg-violet-600 transition-colors"
