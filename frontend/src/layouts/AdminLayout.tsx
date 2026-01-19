@@ -1,6 +1,8 @@
-import { Outlet, NavLink } from "react-router-dom";
-import { LayoutDashboard, BarChart3, MessageSquare, Settings, Heart, Menu, X } from "lucide-react";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { LayoutDashboard, BarChart3, MessageSquare, Settings, Heart, Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
+import { observer } from "mobx-react-lite";
+import authStore from "../stores/authStore";
 
 const navItems = [
     { to: "/admin", icon: LayoutDashboard, label: "Дашборд", end: true },
@@ -9,8 +11,14 @@ const navItems = [
     { to: "/admin/settings", icon: Settings, label: "Настройки" },
 ];
 
-export default function AdminLayout() {
+const AdminLayout = observer(() => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        authStore.logout();
+        navigate("/admin/login");
+    };
 
     return (
         <div className="min-h-screen bg-slate-50">
@@ -77,17 +85,22 @@ export default function AdminLayout() {
                     </nav>
                 </div>
 
-                <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-gradient-to-br from-sky-50 to-teal-50 rounded-2xl p-4 border border-sky-100">
-                        <p className="text-sm text-slate-600 mb-2">Опрос пациентов</p>
-                        <a
-                            href="/"
-                            target="_blank"
-                            className="text-sm font-medium text-sky-600 hover:text-sky-700"
-                        >
-                            Открыть опрос →
-                        </a>
-                    </div>
+                <div className="absolute bottom-6 left-6 right-6 space-y-3">
+                    {authStore.user && (
+                        <div className="bg-slate-100 rounded-xl p-3">
+                            <p className="text-xs text-slate-500">Вы вошли как</p>
+                            <p className="text-sm font-medium text-slate-700 truncate">
+                                {authStore.user.username}
+                            </p>
+                        </div>
+                    )}
+                    <button
+                        onClick={handleLogout}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition-colors"
+                    >
+                        <LogOut className="w-4 h-4" />
+                        Выйти
+                    </button>
                 </div>
             </aside>
 
@@ -99,4 +112,6 @@ export default function AdminLayout() {
             </main>
         </div>
     );
-}
+});
+
+export default AdminLayout;

@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Server, Key, FileText } from "lucide-react";
 
-const strapiAdminUrl = "http://localhost:1339/admin";
+// Dev: localhost:1339, Prod: /server/admin
+const strapiAdminUrl = import.meta.env.PROD
+    ? "/server/admin"
+    : "http://localhost:1339/admin";
 
 export default function Settings() {
     return (
