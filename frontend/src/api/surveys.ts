@@ -1,4 +1,4 @@
-import api from "./client";
+import api, { publicApi } from "./client";
 import dataStore, { SurveyResponse } from "../stores/dataStore";
 
 type StrapiResponse = {
@@ -57,11 +57,13 @@ export async function submitSurvey(payload: {
     dataJson: Record<string, unknown>;
     type: string;
 }) {
-    const res = await api.post("/data-quests", { data: payload });
+    // Используем публичный API без токена
+    const res = await publicApi.post("/data-quests", { data: payload });
     return res.data;
 }
 
 export async function verifyPinCode(code: string) {
-    const res = await api.post<{ ok: boolean }>("/access-codes/verify", { code });
+    // Используем публичный API без токена
+    const res = await publicApi.post<{ ok: boolean }>("/access-codes/verify", { code });
     return res.data;
 }

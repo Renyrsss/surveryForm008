@@ -1,15 +1,16 @@
 # Деплой на Coolify
 
-## Структура
+## Структура доменов
 
-```
-form008.nnmc.kz     → Frontend (React)
-strapi.nnmc.kz      → Strapi (или другой поддомен/IP)
-```
+| URL | Описание |
+|-----|----------|
+| `https://surveryform.nnmc.kz/` | Frontend — опрос для пациентов |
+| `https://surveryform.nnmc.kz/admin` | React админка — аналитика |
+| `https://form008.nnmc.kz` | Strapi сервер — API и админка Strapi |
 
 ---
 
-## 1. Деплой Frontend
+## 1. Деплой Frontend (surveryform.nnmc.kz)
 
 ### Build команда:
 ```bash
@@ -22,13 +23,11 @@ frontend/dist
 ```
 
 ### Environment variables:
-```env
-VITE_API_URL=https://strapi.nnmc.kz
-```
+Не требуются (всё встроено в билд)
 
 ---
 
-## 2. Деплой Strapi (Backend)
+## 2. Деплой Strapi (form008.nnmc.kz)
 
 ### Build команда:
 ```bash
@@ -64,12 +63,18 @@ DATABASE_FILENAME=.tmp/data.db
 
 ## 3. После деплоя
 
-1. Открой Strapi Admin (например `https://strapi.nnmc.kz/admin`)
+### Strapi:
+1. Открой `https://form008.nnmc.kz/admin`
 2. Создай администратора Strapi
 3. Настрой права доступа:
    - **Settings → Users & Permissions → Roles → Public**
    - Включи: `access-code.verify`, `data-quest.create`, `data-quest.find`, `survey-config.find`
 4. Создай PIN-коды в **Content Manager → Access Code**
+
+### Frontend:
+1. Открой `https://surveryform.nnmc.kz/admin/login`
+2. Войди с учётными данными Strapi пользователя
+3. Проверь аналитику
 
 ---
 
@@ -83,5 +88,8 @@ cd server && npm run develop
 cd frontend && npm run dev
 ```
 
-- Frontend: http://localhost:5173
-- Strapi Admin: http://localhost:1339/admin
+| URL | Описание |
+|-----|----------|
+| http://localhost:5173 | Frontend |
+| http://localhost:5173/admin | React админка |
+| http://localhost:1339/admin | Strapi админка |
