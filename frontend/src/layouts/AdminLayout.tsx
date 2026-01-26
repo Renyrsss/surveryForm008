@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { LayoutDashboard, BarChart3, MessageSquare, Settings, Heart, Menu, X, LogOut } from "lucide-react";
+import { LayoutDashboard, BarChart3, MessageSquare, ClipboardList, Settings, Heart, Menu, X, LogOut } from "lucide-react";
 import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import authStore from "../stores/authStore";
@@ -8,6 +8,7 @@ const navItems = [
     { to: "/admin", icon: LayoutDashboard, label: "Дашборд", end: true },
     { to: "/admin/analytics", icon: BarChart3, label: "Аналитика" },
     { to: "/admin/comments", icon: MessageSquare, label: "Комментарии" },
+    { to: "/admin/questions", icon: ClipboardList, label: "Вопросы" },
     { to: "/admin/settings", icon: Settings, label: "Настройки" },
 ];
 

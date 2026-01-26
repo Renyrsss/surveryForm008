@@ -513,7 +513,7 @@ export interface ApiSurveyConfigSurveyConfig
     singularName: 'survey-config';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

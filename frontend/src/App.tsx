@@ -4,6 +4,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Analytics from "./pages/admin/Analytics";
 import Comments from "./pages/admin/Comments";
+import Questions from "./pages/admin/Questions";
 import Settings from "./pages/admin/Settings";
 import Login from "./pages/admin/Login";
 import PrivateRoute from "./components/PrivateRoute";
@@ -24,6 +25,7 @@ function App() {
                 <Route index element={<Dashboard />} />
                 <Route path="analytics" element={<Analytics />} />
                 <Route path="comments" element={<Comments />} />
+                <Route path="questions" element={<Questions />} />
                 <Route path="settings" element={<Settings />} />
             </Route>
         </Routes>

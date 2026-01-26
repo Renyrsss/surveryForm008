@@ -20,11 +20,19 @@ export async function fetchSurveyResponses() {
         const filters = dataStore.filters;
         const params = new URLSearchParams();
 
+        let andIndex = 0;
         if (filters.startDate) {
-            params.append("filters[$and][0][createdAt][$gt]", filters.startDate);
+            params.append(
+                `filters[$and][${andIndex}][createdAt][$gt]`,
+                filters.startDate
+            );
+            andIndex++;
         }
         if (filters.endDate) {
-            params.append("filters[$and][1][createdAt][$lte]", filters.endDate);
+            params.append(
+                `filters[$and][${andIndex}][createdAt][$lte]`,
+                filters.endDate
+            );
         }
         if (filters.department && filters.department !== "all") {
             params.append("filters[type][$eq]", filters.department);

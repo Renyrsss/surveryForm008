@@ -8,7 +8,7 @@
     "description": "SurveyJS configuration by locale"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
