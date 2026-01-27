@@ -10,6 +10,7 @@ export default [
                 "https://surveryform.nnmc.kz",
                 "http://form008.nnmc.kz",
                 "https://form008.nnmc.kz",
+                "http://192.168.101.25:1114",
             ],
             headers: "*",
             methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
