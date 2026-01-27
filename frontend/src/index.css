@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #0ea5e9;
+  --color-primary-dark: #0284c7;
+  --color-accent: #14b8a6;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SurveyJS Custom Theme */
+.sd-root-modern {
+  --sjs-general-backcolor: #ffffff !important;
+  --sjs-general-backcolor-dark: #ffffff !important;
+  --sjs-general-backcolor-dim: #ffffff !important;
+  --sjs-general-backcolor-dim-light: #ffffff !important;
+  --sjs-primary-backcolor: var(--color-primary);
+  --sjs-primary-backcolor-dark: var(--color-primary-dark);
+  --sjs-primary-forecolor: #ffffff;
+  --sjs-base-unit: 8px;
+  --sjs-corner-radius: 12px;
+  --sjs-font-family: 'Inter', sans-serif;
+  background-color: #ffffff !important;
+}
+
+.sd-body {
+  background-color: #ffffff !important;
+}
+
+.sd-page {
+  background-color: #ffffff !important;
+}
+
+.sd-container-modern {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #ffffff !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sd-container-modern {
+    padding: 12px;
+  }
+  
+  .sd-page {
+    padding: 12px !important;
+  }
+  
+  .sd-question {
+    padding: 12px !important;
+  }
+  
+  .sd-rating {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  
+  .sd-rating__item {
+    min-width: 36px !important;
+    min-height: 36px !important;
+    font-size: 14px !important;
+  }
+  
+  .sd-title {
+    font-size: 16px !important;
+  }
+  
+  .sd-description {
+    font-size: 14px !important;
+  }
+  
+  .sd-btn {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+  
+  .sd-navigation__complete-btn,
+  .sd-navigation__next-btn,
+  .sd-navigation__prev-btn {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .sd-footer {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
+
+/* Remove gray backgrounds everywhere */
+.sd-element--with-frame,
+.sd-element__content,
+.sd-panel,
+.sd-panel__content,
+.sd-question__content,
+.sd-row {
+  background-color: #ffffff !important;
+}
+
+/* Question cards styling */
+.sd-element--with-frame {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  margin-bottom: 16px !important;
+}
+
+.sd-title {
+  font-weight: 600 !important;
+}
+
+.sd-btn {
+  border-radius: 10px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.sd-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+/* Rating items */
+.sd-rating__item {
+  border-radius: 50% !important;
+  border: 2px solid #e5e7eb !important;
+  transition: all 0.2s ease !important;
+}
+
+.sd-rating__item:hover {
+  border-color: var(--color-primary) !important;
+  background-color: #f0f9ff !important;
+}
+
+.sd-rating__item--selected {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: white !important;
+}
+
+/* Radio buttons */
+.sd-selectbase__item {
+  margin-bottom: 8px !important;
+}
+
+/* Progress bar */
+.sd-progress {
+  background-color: #e5e7eb !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.sd-progress__bar {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent)) !important;
+  border-radius: 8px !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
