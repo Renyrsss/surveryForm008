@@ -8,25 +8,24 @@ import Questions from "./pages/admin/Questions";
 import Settings from "./pages/admin/Settings";
 import Login from "./pages/admin/Login";
 import PrivateRoute from "./components/PrivateRoute";
-
+//hello owrld
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<SurveyPage />} />
-            <Route path="/admin/login" element={<Login />} />
+            <Route path='/' element={<SurveyPage />} />
+            <Route path='/admin/login' element={<Login />} />
             <Route
-                path="/admin"
+                path='/admin'
                 element={
                     <PrivateRoute>
                         <AdminLayout />
                     </PrivateRoute>
-                }
-            >
+                }>
                 <Route index element={<Dashboard />} />
-                <Route path="analytics" element={<Analytics />} />
-                <Route path="comments" element={<Comments />} />
-                <Route path="questions" element={<Questions />} />
-                <Route path="settings" element={<Settings />} />
+                <Route path='analytics' element={<Analytics />} />
+                <Route path='comments' element={<Comments />} />
+                <Route path='questions' element={<Questions />} />
+                <Route path='settings' element={<Settings />} />
             </Route>
         </Routes>
     );
