@@ -154,7 +154,7 @@ export async function createSurveyConfig(data: {
     const res = await api.post<StrapiSingleResponse>("/survey-configs", {
         data,
     });
-    return res.data.data;
+    return normalizeSurveyConfig(res.data.data);
 }
 
 export async function updateSurveyConfig(
@@ -172,7 +172,7 @@ export async function updateSurveyConfig(
         `/survey-configs/${documentId}`,
         { data }
     );
-    return res.data.data;
+    return normalizeSurveyConfig(res.data.data);
 }
 
 export async function deleteSurveyConfig(documentId: string) {

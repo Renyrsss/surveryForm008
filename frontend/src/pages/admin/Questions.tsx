@@ -741,11 +741,12 @@ export default function Questions() {
     const handleSave = async () => {
         if (!schema) return;
         const config = configs[activeTab];
-        if (!config?.documentId) return;
+        const targetId = config?.documentId ?? config?.id;
+        if (!targetId) return;
 
         setSaving(true);
         try {
-            await updateSurveyConfig(config.documentId, {
+            await updateSurveyConfig(targetId, {
                 schema: schema as unknown as Record<string, unknown>,
             });
             setHasChanges(false);

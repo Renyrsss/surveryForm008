@@ -116,7 +116,7 @@ export default function Settings() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white rounded-2xl border border-slate-200 p-6"
+                    className="bg-white rounded-2xl border border-slate-200 p-6 lg:col-span-2"
                 >
                     <div className="flex items-start gap-4 mb-4">
                         <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
@@ -275,10 +275,44 @@ export default function Settings() {
                     </div>
                 </motion.div>
 
+                {/* Survey Config */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="bg-white rounded-2xl border border-slate-200 p-6"
+                >
+                    <div className="flex items-start gap-4 mb-4">
+                        <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
+                            <FileText className="w-6 h-6 text-teal-600" />
+                        </div>
+                        <div>
+                            <h2 className="text-lg font-semibold text-slate-900">
+                                Вопросы опроса
+                            </h2>
+                            <p className="text-sm text-slate-500">
+                                Редактирование структуры опроса
+                            </p>
+                        </div>
+                    </div>
+                    <p className="text-slate-600 mb-4">
+                        Вопросы опроса можно редактировать в разделе Survey
+                        Configs в Strapi. Поддерживаются русский и казахский
+                        языки.
+                    </p>
+                    <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
+                        <p className="text-sm text-teal-800">
+                            <strong>Формат:</strong> Используйте JSON-схему
+                            SurveyJS для описания вопросов.
+                        </p>
+                    </div>
+                </motion.div>
+
                 {/* Strapi Admin */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
                     className="bg-white rounded-2xl border border-slate-200 p-6"
                 >
                     <div className="flex items-start gap-4 mb-4">
@@ -309,45 +343,12 @@ export default function Settings() {
                     </a>
                 </motion.div>
 
-                {/* Survey Config */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="bg-white rounded-2xl border border-slate-200 p-6"
-                >
-                    <div className="flex items-start gap-4 mb-4">
-                        <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center">
-                            <FileText className="w-6 h-6 text-teal-600" />
-                        </div>
-                        <div>
-                            <h2 className="text-lg font-semibold text-slate-900">
-                                Вопросы опроса
-                            </h2>
-                            <p className="text-sm text-slate-500">
-                                Редактирование структуры опроса
-                            </p>
-                        </div>
-                    </div>
-                    <p className="text-slate-600 mb-4">
-                        Вопросы опроса можно редактировать в разделе Survey
-                        Configs в Strapi. Поддерживаются русский и казахский
-                        языки.
-                    </p>
-                    <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
-                        <p className="text-sm text-teal-800">
-                            <strong>Формат:</strong> Используйте JSON-схему
-                            SurveyJS для описания вопросов.
-                        </p>
-                    </div>
-                </motion.div>
-
                 {/* Info */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="bg-gradient-to-br from-sky-500 to-teal-500 rounded-2xl p-6 text-white"
+                    className="bg-gradient-to-br from-sky-500 to-teal-500 rounded-2xl p-6 text-white lg:col-span-2"
                 >
                     <h2 className="text-lg font-semibold mb-2">О системе</h2>
                     <p className="text-white/80 mb-4">
