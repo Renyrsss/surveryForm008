@@ -6,6 +6,45 @@ import * as XLSX from "xlsx";
 import dataStore from "../../stores/dataStore";
 import { fetchSurveyResponses } from "../../api/surveys";
 
+const COMMENT_KEYS = [
+    "Комментарий",
+    "Ваши замечания, пожелания, предложения",
+    "Сіздің ескертулеріңіз, тілектеріңіз, ұсыныстарыңыз",
+    "Сіздің пікірлеріңіз",
+];
+
+const COMMENT_KEYWORDS = [
+    "комментар",
+    "замечан",
+    "пожелан",
+    "предложен",
+    "ескерт",
+    "тілек",
+    "ұсыныс",
+    "пікір",
+];
+
+function extractComment(dataJson: Record<string, unknown>): string {
+    for (const key of COMMENT_KEYS) {
+        const value = dataJson[key];
+        if (typeof value === "string" && value.trim() !== "") return value;
+    }
+
+    for (const [key, value] of Object.entries(dataJson)) {
+        if (
+            typeof value === "string" &&
+            value.trim() !== "" &&
+            COMMENT_KEYWORDS.some((keyword) =>
+                key.toLowerCase().includes(keyword)
+            )
+        ) {
+            return value;
+        }
+    }
+
+    return "";
+}
+
 const Comments = observer(() => {
     const [search, setSearch] = useState("");
 
@@ -20,7 +59,7 @@ const Comments = observer(() => {
             .map((r) => ({
                 date: new Date(r.createdAt).toLocaleDateString("ru-RU"),
                 department: r.type || "—",
-                text: String(r.dataJson["Комментарий"] || r.dataJson["Ваши замечания, пожелания, предложения"] || ""),
+                text: extractComment(r.dataJson as Record<string, unknown>),
             }))
             .filter((c) => c.text.trim() !== "")
             .filter(
