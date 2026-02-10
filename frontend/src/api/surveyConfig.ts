@@ -1,4 +1,5 @@
 import api, { publicApi } from "./client";
+import { normalizeDepartmentChoicesInSchema } from "../constants/departments";
 
 export type SurveyConfigData = {
     id: number;
@@ -126,11 +127,14 @@ export async function fetchActiveSurveyConfig(locale: string) {
         null;
 
     if (match?.schema) {
-        const parsed = parseSchema(match.schema);
-        if (parsed) {
-            match = { ...match, schema: parsed };
-        }
-    }
+                const parsed = parseSchema(match.schema);
+                if (parsed) {
+                    match = {
+                        ...match,
+                        schema: normalizeDepartmentChoicesInSchema(parsed, locale),
+                    };
+                }
+            }
 
     return match;
 }
@@ -140,7 +144,14 @@ export async function fetchSurveyConfigsAuth() {
     const res = await api.get<StrapiListResponse>(
         "/survey-configs?pagination[pageSize]=100"
     );
-    return normalizeSurveyConfigList(res.data.data);
+    return normalizeSurveyConfigList(res.data.data).map((config) => {
+        const parsed = parseSchema(config.schema);
+        if (!parsed) return config;
+        return {
+            ...config,
+            schema: normalizeDepartmentChoicesInSchema(parsed, config.locale),
+        };
+    });
 }
 
 export async function createSurveyConfig(data: {

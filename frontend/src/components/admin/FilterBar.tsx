@@ -2,19 +2,14 @@ import { observer } from "mobx-react-lite";
 import { Calendar, Building2, Search } from "lucide-react";
 import dataStore from "../../stores/dataStore";
 import { fetchSurveyResponses } from "../../api/surveys";
+import { DEPARTMENTS } from "../../constants/departments";
 
 const departments = [
     { value: "all", label: "Все отделения" },
-    { value: "КХО", label: "КХО" },
-    { value: "ИК-1", label: "ИК-1" },
-    { value: "ИК-2", label: "ИК-2" },
-    { value: "Гинекология", label: "Гинекология" },
-    { value: "Аритмология", label: "Аритмология" },
-    { value: "Терапия 2", label: "Терапия 2" },
-    { value: "ОХ и ТХ", label: "ОХ и ТХ" },
-    { value: "НХО", label: "НХО" },
-    { value: "Урология", label: "Урология" },
-    { value: "ДКХО", label: "ДКХО" },
+    ...DEPARTMENTS.map((department) => ({
+        value: department.value,
+        label: department.ruLabel,
+    })),
 ];
 
 const FilterBar = observer(() => {

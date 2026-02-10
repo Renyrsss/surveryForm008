@@ -1,5 +1,6 @@
 import api, { publicApi } from "./client";
 import dataStore, { SurveyResponse } from "../stores/dataStore";
+import { getDepartmentAliases } from "../constants/departments";
 
 type StrapiResponse = {
     data: SurveyResponse[];
@@ -35,7 +36,10 @@ export async function fetchSurveyResponses() {
             );
         }
         if (filters.department && filters.department !== "all") {
-            params.append("filters[type][$eq]", filters.department);
+            const aliases = getDepartmentAliases(filters.department);
+            aliases.forEach((alias, index) => {
+                params.append(`filters[type][$in][${index}]`, alias);
+            });
         }
 
         let allData: SurveyResponse[] = [];

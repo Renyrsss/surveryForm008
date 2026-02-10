@@ -9,6 +9,7 @@ import "survey-core/i18n/kazakh";
 import surveyStore from "../../stores/surveyStore";
 import { submitSurvey } from "../../api/surveys";
 import { fetchActiveSurveyConfig } from "../../api/surveyConfig";
+import { normalizeDepartment } from "../../constants/departments";
 
 const SurveyForm = observer(() => {
     const { t } = useTranslation();
@@ -65,7 +66,7 @@ const SurveyForm = observer(() => {
             try {
                 await submitSurvey({
                     dataJson: sender.data,
-                    type: sender.data["отдел"] || "",
+                    type: normalizeDepartment(String(sender.data["отдел"] || "")),
                 });
                 options.showSaveSuccess(t("survey.success"));
                 setTimeout(() => window.location.reload(), 2500);
