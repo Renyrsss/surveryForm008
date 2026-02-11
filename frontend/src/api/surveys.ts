@@ -23,16 +23,18 @@ export async function fetchSurveyResponses() {
 
         let andIndex = 0;
         if (filters.startDate) {
+            const start = `${filters.startDate}T00:00:00.000Z`;
             params.append(
-                `filters[$and][${andIndex}][createdAt][$gt]`,
-                filters.startDate
+                `filters[$and][${andIndex}][createdAt][$gte]`,
+                start
             );
             andIndex++;
         }
         if (filters.endDate) {
+            const end = `${filters.endDate}T23:59:59.999Z`;
             params.append(
                 `filters[$and][${andIndex}][createdAt][$lte]`,
-                filters.endDate
+                end
             );
         }
         if (filters.department && filters.department !== "all") {
