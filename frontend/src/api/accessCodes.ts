@@ -29,6 +29,10 @@ type StrapiSingleResponse = {
     data: AccessCode;
 };
 
+const toNumber = (value: unknown): number | null => {
+    return typeof value === "number" ? value : null;
+};
+
 const normalizeAccessCode = (item: unknown): AccessCode | null => {
     if (!item || typeof item !== "object") return null;
     const record = item as AccessCode & {
@@ -58,10 +62,44 @@ const normalizeAccessCodeList = (data: unknown): AccessCode[] => {
 };
 
 export async function fetchAccessCodes() {
-    const res = await api.get<StrapiListResponse>(
-        "/access-codes?pagination[pageSize]=100&sort=createdAt:desc"
-    );
-    return normalizeAccessCodeList(res.data.data);
+    const [publishedRes, draftRes] = await Promise.all([
+        api.get<StrapiListResponse>(
+            "/access-codes?pagination[pageSize]=100&sort=createdAt:desc&status=published"
+        ),
+        api
+            .get<StrapiListResponse>(
+                "/access-codes?pagination[pageSize]=100&sort=createdAt:desc&status=draft"
+            )
+            .catch(() => null),
+    ]);
+
+    const combined = [
+        ...normalizeAccessCodeList(publishedRes.data.data),
+        ...(draftRes ? normalizeAccessCodeList(draftRes.data.data) : []),
+    ];
+
+    const merged = new Map<string, AccessCode>();
+    combined.forEach((item) => {
+        const key = item.documentId ?? item.code ?? String(item.id);
+        const prev = merged.get(key);
+        if (!prev) {
+            merged.set(key, item);
+            return;
+        }
+
+        merged.set(key, {
+            ...prev,
+            ...item,
+            usesCount: Math.max(toNumber(prev.usesCount) ?? 0, toNumber(item.usesCount) ?? 0),
+            maxUses: item.maxUses ?? prev.maxUses ?? null,
+        });
+    });
+
+    return Array.from(merged.values()).sort((a, b) => {
+        const aTime = new Date(a.createdAt ?? 0).getTime();
+        const bTime = new Date(b.createdAt ?? 0).getTime();
+        return bTime - aTime;
+    });
 }
 
 export async function createAccessCode(data: {
@@ -71,7 +109,7 @@ export async function createAccessCode(data: {
     expiresAt?: string | null;
     maxUses?: number | null;
 }) {
-    const res = await api.post<StrapiSingleResponse>("/access-codes", {
+    const res = await api.post<StrapiSingleResponse>("/access-codes?status=published", {
         data,
     });
     return normalizeAccessCode(res.data.data);
@@ -82,7 +120,7 @@ export async function updateAccessCode(
     data: Partial<AccessCode>
 ) {
     const res = await api.put<StrapiSingleResponse>(
-        `/access-codes/${idOrDocumentId}`,
+        `/access-codes/${idOrDocumentId}?status=published`,
         { data }
     );
     return normalizeAccessCode(res.data.data);

@@ -1,4 +1,5 @@
 import api, { publicApi } from "./client";
+import { normalizeDepartmentChoicesInSchema } from "../constants/departments";
 
 export type SurveyConfigData = {
     id: number;
@@ -126,11 +127,14 @@ export async function fetchActiveSurveyConfig(locale: string) {
         null;
 
     if (match?.schema) {
-        const parsed = parseSchema(match.schema);
-        if (parsed) {
-            match = { ...match, schema: parsed };
-        }
-    }
+                const parsed = parseSchema(match.schema);
+                if (parsed) {
+                    match = {
+                        ...match,
+                        schema: normalizeDepartmentChoicesInSchema(parsed, locale),
+                    };
+                }
+            }
 
     return match;
 }
@@ -140,7 +144,14 @@ export async function fetchSurveyConfigsAuth() {
     const res = await api.get<StrapiListResponse>(
         "/survey-configs?pagination[pageSize]=100"
     );
-    return normalizeSurveyConfigList(res.data.data);
+    return normalizeSurveyConfigList(res.data.data).map((config) => {
+        const parsed = parseSchema(config.schema);
+        if (!parsed) return config;
+        return {
+            ...config,
+            schema: normalizeDepartmentChoicesInSchema(parsed, config.locale),
+        };
+    });
 }
 
 export async function createSurveyConfig(data: {
@@ -154,11 +165,11 @@ export async function createSurveyConfig(data: {
     const res = await api.post<StrapiSingleResponse>("/survey-configs", {
         data,
     });
-    return res.data.data;
+    return normalizeSurveyConfig(res.data.data);
 }
 
 export async function updateSurveyConfig(
-    documentId: string,
+    idOrDocumentId: string | number,
     data: {
         title?: string;
         locale?: string;
@@ -169,10 +180,10 @@ export async function updateSurveyConfig(
     }
 ) {
     const res = await api.put<StrapiSingleResponse>(
-        `/survey-configs/${documentId}`,
+        `/survey-configs/${idOrDocumentId}`,
         { data }
     );
-    return res.data.data;
+    return normalizeSurveyConfig(res.data.data);
 }
 
 export async function deleteSurveyConfig(documentId: string) {

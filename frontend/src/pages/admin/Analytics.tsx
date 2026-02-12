@@ -8,6 +8,7 @@ import { fetchSurveyResponses } from "../../api/surveys";
 import FilterBar from "../../components/admin/FilterBar";
 import YesNoChart from "../../components/admin/YesNoChart";
 import FullQuestionChart from "../../components/admin/FullQuestionChart";
+import { normalizeDepartment } from "../../constants/departments";
 
 const Analytics = observer(() => {
     useEffect(() => {
@@ -19,7 +20,7 @@ const Analytics = observer(() => {
     const exportToExcel = () => {
         const data = dataStore.responses.map((r) => ({
             Дата: new Date(r.createdAt).toLocaleDateString("ru-RU"),
-            Отделение: r.type || "—",
+            Отделение: normalizeDepartment(r.type) || "—",
             ...r.dataJson,
         }));
 

@@ -1,5 +1,6 @@
 import api, { publicApi } from "./client";
 import dataStore, { SurveyResponse } from "../stores/dataStore";
+import { getDepartmentAliases } from "../constants/departments";
 
 type StrapiResponse = {
     data: SurveyResponse[];
@@ -22,20 +23,25 @@ export async function fetchSurveyResponses() {
 
         let andIndex = 0;
         if (filters.startDate) {
+            const start = `${filters.startDate}T00:00:00.000Z`;
             params.append(
-                `filters[$and][${andIndex}][createdAt][$gt]`,
-                filters.startDate
+                `filters[$and][${andIndex}][createdAt][$gte]`,
+                start
             );
             andIndex++;
         }
         if (filters.endDate) {
+            const end = `${filters.endDate}T23:59:59.999Z`;
             params.append(
                 `filters[$and][${andIndex}][createdAt][$lte]`,
-                filters.endDate
+                end
             );
         }
         if (filters.department && filters.department !== "all") {
-            params.append("filters[type][$eq]", filters.department);
+            const aliases = getDepartmentAliases(filters.department);
+            aliases.forEach((alias, index) => {
+                params.append(`filters[type][$in][${index}]`, alias);
+            });
         }
 
         let allData: SurveyResponse[] = [];
