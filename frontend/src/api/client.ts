@@ -2,8 +2,9 @@ import axios from "axios";
 
 // Dev: /api (через vite proxy на localhost:1339)
 // Prod: https://form008.nnmc.kz/api (Strapi на отдельном домене)
+const envApiUrl = import.meta.env.VITE_API_URL as string | undefined;
 const baseURL = import.meta.env.PROD
-    ? "https://form008.nnmc.kz/api"
+    ? (envApiUrl?.trim() || "https://form008.nnmc.kz/api")
     : "/api";
 
 // Публичный API клиент (без токена) - для отправки формы и проверки PIN

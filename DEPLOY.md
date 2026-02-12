@@ -12,7 +12,14 @@
 
 ## 1. Деплой Frontend (surveryform.nnmc.kz)
 
-### Build команда:
+### Рекомендуемые настройки Coolify:
+```txt
+Base Directory: frontend
+Build Command: npm ci && npm run build
+Publish Directory: dist
+```
+
+### Если деплой из корня репозитория:
 ```bash
 cd frontend && npm ci && npm run build
 ```
@@ -23,7 +30,11 @@ frontend/dist
 ```
 
 ### Environment variables:
-Не требуются (всё встроено в билд)
+```env
+VITE_API_URL=https://form008.nnmc.kz/api
+```
+
+> После изменения frontend-переменных нужен новый build/deploy.
 
 ---
 
